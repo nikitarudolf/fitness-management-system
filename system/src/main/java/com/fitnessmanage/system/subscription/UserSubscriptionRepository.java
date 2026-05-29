@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,4 +19,11 @@ public interface UserSubscriptionRepository extends JpaRepository<UserSubscripti
            "AND us.isActive = true " +
            "AND us.endDate >= CURRENT_DATE")
     Optional<UserSubscription> findActiveSubscription(@Param("userId") Long userId);
+
+    @Query("SELECT COUNT(us) FROM UserSubscription us " +
+            "WHERE us.isActive = true AND us.endDate >= CURRENT_DATE")
+    long countActiveSubscriptions();
+
+    @Query("SELECT SUM(us.plan.price) FROM UserSubscription us")
+    BigDecimal calculateTotalRevenue();
 }
