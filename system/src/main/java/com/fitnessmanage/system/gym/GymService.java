@@ -46,7 +46,7 @@ public class GymService {
     @Transactional
     public VisitResponse checkOut(Long userId) {
         Visit visit = visitRepository.findByUserIdAndCheckOutTimeIsNull(userId)
-                .orElseThrow(() -> new BusinessException("Активного посещения не найдено. Сначала войдите."));
+                .orElseThrow(() -> new ResourceNotFoundException("Активного посещения не найдено. Сначала войдите."));
 
         visit.setCheckOutTime(LocalDateTime.now());
         return toResponse(visit);
