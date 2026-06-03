@@ -38,7 +38,7 @@ Fitness Management System is a backend application designed to automate fitness 
 
 ## 🏗 Architecture
 
-The project follows a **feature-based modular monolith architecture**. Business functionality is organized into independent modules, making the codebase easier to maintain, extend, and scale.
+The project follows a **feature-based architecture**. Business functionality is organized into independent modules, making the codebase easier to maintain, extend, and scale.
 
 ```text
 src/main/java/com/fitnessmanage/system
