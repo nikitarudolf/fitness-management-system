@@ -1,20 +1,18 @@
 # 🏋️ Fitness Management System
 
-A backend application for managing fitness club operations, including user management, trainer scheduling, subscriptions, gym visits, and workout bookings.
+Fitness Management System is a backend application designed to automate fitness club operations. The system provides functionality for managing users, trainers, memberships, workout bookings, gym visits, and club administration.
 
-## ✨ Features
+## 🚀 Features
 
-* 🔐 JWT-based authentication and authorization
-* 👥 User and trainer management
-* 📅 Workout scheduling and booking system
-* 🎫 Subscription management
-* 🏃 Gym visit tracking
-* 📊 Administrative functionality and club statistics
-* 🗄 Database versioning with Flyway
-* 📖 API documentation with Swagger/OpenAPI
-* 🐳 Dockerized deployment
-
----
+* JWT-based authentication and authorization
+* User and trainer management
+* Membership and subscription management
+* Workout scheduling and booking
+* Gym visit tracking
+* Club statistics and administration
+* Database versioning with Flyway
+* OpenAPI/Swagger documentation
+* Dockerized deployment
 
 ## 🛠 Tech Stack
 
@@ -25,162 +23,146 @@ A backend application for managing fitness club operations, including user manag
 * Spring Security
 * Spring Data JPA
 * Hibernate
-* Bean Validation
 
 ### Database
 
 * PostgreSQL
 * Flyway
 
-### Security
-
-* JWT Authentication
-* Role-Based Access Control (RBAC)
-
-### DevOps & Tools
+### Tools
 
 * Maven
 * Docker
 * Docker Compose
 * Swagger / OpenAPI
-* Lombok
-
----
 
 ## 🏗 Architecture
 
-The project follows a layered architecture:
+The project follows a **feature-based modular monolith architecture**. Business functionality is organized into independent modules, making the codebase easier to maintain, extend, and scale.
 
 ```text
-Controller Layer
-        ↓
-Service Layer
-        ↓
-Repository Layer
-        ↓
-PostgreSQL Database
+src/main/java/com/fitnessmanage/system
+
+├── admin
+├── booking
+├── gym
+├── security
+├── subscription
+├── trainer
+├── user
+└── common
 ```
 
-### Main Modules
+### Modules
 
-```text
-admin          - administration and statistics
-user           - user management
-trainer        - trainer management
-subscription   - subscription management
-booking        - workout booking system
-gym            - visit tracking
-security       - authentication and authorization
-common         - shared utilities and exception handling
-```
+| Module       | Responsibility                          |
+| ------------ | --------------------------------------- |
+| admin        | Club administration and statistics      |
+| booking      | Workout scheduling and booking          |
+| gym          | Gym visit tracking                      |
+| subscription | Membership management                   |
+| trainer      | Trainer profiles and schedules          |
+| user         | User management                         |
+| security     | Authentication and authorization        |
+| common       | Shared utilities and exception handling |
 
----
+Each feature contains its own business logic, DTOs, repositories, services, and controllers.
 
 ## 📋 Business Functionality
 
-### User Management
+### Authentication
 
-* Registration and authentication
-* Profile management
+* User registration
+* User login
+* JWT token generation
 * Role-based access control
+
+### Membership Management
+
+* Purchase subscriptions
+* Manage subscription plans
+* Track active memberships
 
 ### Trainer Management
 
-* Trainer registration
-* Schedule management
-* Session organization
+* Register trainers
+* Manage trainer schedules
+* View trainer information
 
-### Subscription Management
+### Workout Booking
 
-* Subscription creation
-* Subscription tracking
-* Membership administration
+* Create schedule slots
+* Book training sessions
+* Manage booking status
 
-### Booking System
+### Gym Management
 
-* Training session booking
-* Schedule slot management
-* Booking status control
+* Register visits
+* Monitor gym occupancy
 
-### Gym Visits
+### Administration
 
-* Visit registration
-* Attendance tracking
+* Register trainers
+* Assign subscriptions
+* View club statistics
 
----
+## 🗄 Database Migrations
 
-## 🗄 Database
-
-The database schema is managed through Flyway migrations:
+Database schema is managed using Flyway.
 
 ```text
 V1 - Users and Trainers
 V2 - Subscriptions
 V3 - Schedules and Bookings
 V4 - Visits
-V5 - Initial Data
+V5 - Default Data
 ```
 
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-* Java 21
-* Maven 3.9+
-* Docker
-* PostgreSQL
-
-### Clone Repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/fitness-management-system.git
-cd fitness-management-system/system
-```
-
-### Run with Docker
+## 🐳 Running with Docker
 
 ```bash
 docker-compose up --build
 ```
 
-### Run Locally
+## ⚙️ Running Locally
+
+### Clone repository
+
+```bash
+git clone https://github.com/your-username/fitness-management-system.git
+cd fitness-management-system/system
+```
+
+### Start PostgreSQL
+
+Configure PostgreSQL and update the database settings in:
+
+```text
+src/main/resources/application.yml
+```
+
+### Run application
 
 ```bash
 mvn clean install
 mvn spring-boot:run
 ```
 
----
-
 ## 📖 API Documentation
 
-After application startup Swagger UI is available at:
-
-```text
-http://localhost:8080/swagger-ui.html
-```
-
-or
+After startup Swagger UI is available at:
 
 ```text
 http://localhost:8080/swagger-ui/index.html
 ```
 
----
+## 🎯 Project Goals
 
-## 🎯 Learning Goals
+The project was developed as a diploma project to gain practical experience in:
 
-This project was developed as a diploma project to gain practical experience with:
-
-* Enterprise Java development
+* Backend development with Java and Spring Boot
 * REST API design
-* Spring ecosystem
-* Database design
+* Database design and migrations
 * Authentication and authorization
 * Docker-based deployment
-* Database migrations
-* Layered application architecture
-
----
+* Feature-based application architecture
