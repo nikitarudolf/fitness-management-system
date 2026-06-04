@@ -29,7 +29,7 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "/error" // КРИТИЧЕСКИ ВАЖНО для Spring Boot 3
+                                "/error"
                         ).permitAll()
 
                         .requestMatchers("/api/v1/auth/**").permitAll()
